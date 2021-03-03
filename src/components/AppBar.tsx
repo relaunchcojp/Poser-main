@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 19,
     bottom: 16,
-    color: 'rgba(0,0,0,0.8)',
+    color: 'rgba(255,255,255,0.8)',
   },
   appbarTitle: {
     marginBottom: 8,

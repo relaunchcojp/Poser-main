@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, Image , TouchableOpacity} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { Button } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { string } from 'prop-types';
 import { SliderBox } from 'react-native-image-slider-box';
 import LottieView from 'lottie-react-native';
+import { Audio } from 'expo-av';
 
 const images = [
   require('../../assets/Training/1/poser1.jpg'),
@@ -12,8 +14,25 @@ const images = [
   require('../../assets/Training/1/poser3.jpg'),
   require('../../assets/Training/1/poser4.jpg'),
 ];
-export default function TrainingScreen() {
-  
+export default function TrainingScreen(props:any) {
+  const [sound, setSound] = useState();
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync(
+ //   require('../../assets/Voice/TrainingDemo.m4a'),
+    );
+    setSound(sound);
+    console.log('Playing Sound');
+    await sound.playAsync(); }
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log('Unloading Sound');
+          sound.unloadAsync();
+      }
+      : undefined;
+  }, [sound]);
+
   return (
     <View style={styles.container}>
       <View style={styles.trainingMenu}>
@@ -52,20 +71,28 @@ export default function TrainingScreen() {
               right:wp('-3%'),
             }}
           />
-{/*           <Text style={styles.allowleft}><FontAwesome name="angle-double-left" size={50} color='rgba(0,0,0,0.5)' /></Text>
-          <Text style={styles.allowright}><FontAwesome name="angle-double-right" size={50} color='rgba(0,0,0,0.5)' /></Text> */}
+{/*           <Text style={styles.allowleft}><FontAwesome name=“angle-double-left” size={50} color=‘rgba(0,0,0,0.5)’ /></Text>
+          <Text style={styles.allowright}><FontAwesome name=“angle-double-right” size={50} color=‘rgba(0,0,0,0.5)’ /></Text> */}
         </View>
       </View>
       <View style={styles.traininProgress}>
-        <View style={styles.trainingProgressGage}>
-          <FontAwesome name="circle" size={30} color="#FFE100"></FontAwesome>
-          <FontAwesome name="circle" size={30} color="#FFE100"></FontAwesome>
-          <FontAwesome name="circle" size={30} color="#FFE100"></FontAwesome>
-          <FontAwesome name="circle" size={30} color="#FFE100"></FontAwesome>
-          <FontAwesome name="circle" size={30} color="#FFE100"></FontAwesome>
-          <FontAwesome name="circle" size={30} color="#FFE100"></FontAwesome>
-        </View>
-
+        <Button
+          containerStyle={{
+            margin:3,
+          }}
+          raised
+          title=　'トレーニングをスタート'
+          onPress={playSound}
+          style={styles.trainingButton}
+        />
+{/*         <View style={styles.trainingProgressGage}>
+          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
+          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
+          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
+          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
+          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
+          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
+        </View> */}
       </View>
     </View>
   );
@@ -119,6 +146,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     margin: 40,
     marginTop: -5,
+    justifyContent: 'center',
+    alignContent:'center',
   },
   trainingProgressGage: {
     flexDirection: 'row',
@@ -133,4 +162,8 @@ const styles = StyleSheet.create({
     left:wp('2%'),
     bottom:hp('30%'),
   },
+  trainingButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

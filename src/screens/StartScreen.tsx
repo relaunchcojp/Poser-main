@@ -12,7 +12,7 @@ import {
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import LogOutButton from '../components/LogOutButton';
 import CircleCreate from '../components/CircleCreate';
@@ -20,6 +20,7 @@ import BellButton from '../components/BellButton';
 import Loading from '../components/Loading';
 
 const { width, height, scale } = Dimensions.get('window');
+
 
 export default function StartScreen(props: { navigation: any; }) {
   const { navigation } = props;
@@ -35,9 +36,6 @@ export default function StartScreen(props: { navigation: any; }) {
     <View style={styles.container}>
         <Loading isLoading={isLoading}/>
       <View>
-        <Text>この機種のディスプレイ領域　width:{width}</Text>
-        <Text>この機種のディスプレイ領域　height:{height}</Text>
-        <Text>ここはアクティブカレンダー領域</Text>
 
       </View>
       <View style={styles.ActiveCircle}>
@@ -46,6 +44,8 @@ export default function StartScreen(props: { navigation: any; }) {
           style={styles.ActiveCircleSize}
           source={require('../../assets/img/img_ActiveCircle.png')}
         />
+        <View style={styles.CircleInner}>
+        </View>
       </View>
       <View style={styles.userDataDisplay}>
         <Text style={styles.userName}>name</Text>
@@ -56,12 +56,7 @@ export default function StartScreen(props: { navigation: any; }) {
         <View>
           <View style={styles.IndexButton}>
             <View style={styles.innerButton}>
-              <TouchableOpacity onPress={() => {
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: 'ChatScreen' }],
-                });
-              }}>
+              <TouchableOpacity　onPress={() => { navigation.navigate('ChatScreen');}}>
                 <Image
                   style={styles.ButtonSize}
                   source={require('../../assets/btn/btn_menterChat.png')}
@@ -69,7 +64,7 @@ export default function StartScreen(props: { navigation: any; }) {
               </TouchableOpacity>
             </View>
             <View style={styles.innerButton}>
-              <TouchableOpacity >
+              <TouchableOpacity>
                 <Image
                   style={styles.ButtonSize}
                   source={require('../../assets/btn/btn_activeLog.png')}
@@ -77,12 +72,7 @@ export default function StartScreen(props: { navigation: any; }) {
               </TouchableOpacity>
             </View>
           </View>
-          <TouchableOpacity onPress={() => {
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: 'TrainingScreen' }],
-                });
-              }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('TrainingScreen');}}>
             <View style={styles.IndexButtonBottom}>
               <Image
                 style={styles.ButtonSize}
@@ -168,4 +158,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: hp('12%'),
   },
+  CircleInner: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems:'center',
+  }
 });
+

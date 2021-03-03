@@ -14,10 +14,12 @@ import LogInScreen from './src/screens/LogInScreen';
 import SingUpScreen from './src/screens/SingUpScreen';
 import StartScreen from './src/screens/StartScreen';
 import TrainingScreen from './src/screens/TrainingScreen';
-import ChatScreen from './src/screens/ChatScreen';
+import { ChatScreen } from './src/screens/ChatScreen';
 import UserStatusCreate from './src/screens/UserStatusCreate';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // import {firebaseConfig} from './env';
+
 
 const firebaseConfig = {
    apiKey: "AIzaSyDr1mSS0bwstFpWoYzwmppXlidWe2n7JeU",
@@ -35,6 +37,7 @@ if (firebase.apps.length == 0) {
 }
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
@@ -45,7 +48,7 @@ export default function App() {
           headerStyle: { backgroundColor: '#eff4ef' },
           headerTitleStyle: { color: '#000000' },
           headerTitle: 'Poser',
-          headerTintColor: '#ffffff',
+          headerTintColor: '#333',
           headerBackTitle: 'Back',
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           gestureEnabled: true,
@@ -77,6 +80,7 @@ export default function App() {
         <Stack.Screen name="StartScreen" component={StartScreen} />
         <Stack.Screen name="ChatScreen" component={ChatScreen} />
       </Stack.Navigator>
+      
     </NavigationContainer>
   );
 }

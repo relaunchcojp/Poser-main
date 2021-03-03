@@ -1,5 +1,5 @@
 //lib/firebase.ts
-import  firebase from 'firebase';
+import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth'
 
@@ -11,6 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "99504722425",
     appId: "1:99504722425:web:4023b6116f44fac6532d28"
 };
+
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -26,18 +27,16 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
-
-
 export const getMessageDocRef = async () => {
    
-    return firebase.firestore().collection('rooms').doc(uid).collection('messages').doc();
+    return firebase.firestore().collection('rooms').doc('uid').collection('messages').doc();
 };
 
 
 
 
 export const getChatListDocRef = async () => {
-    return firebase.firestore().collection('rooms').doc(uid);
+    return firebase.firestore().collection('rooms').doc('uid');
  };
 
 

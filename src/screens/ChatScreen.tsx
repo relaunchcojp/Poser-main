@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 
-import  firebase from 'firebase';
+import firebase from 'firebase';
 import { getMessageDocRef, getChatListDocRef, getUserId } from '../lib/firebase';
 import { Message } from '../types/message';
 import { MessageItem } from '../components/MessageItem';
@@ -23,7 +23,7 @@ import { ChatList } from '../types/chatList';
 
 
 
-export default ChatScreen = () => {
+export const ChatScreen = () => {
     const [text, setText] = useState<string>('');
     const [messages, setMessages] = useState<Message[]>([]);
     const [userId, setUserId] = useState<string | undefined>();
@@ -62,7 +62,7 @@ export default ChatScreen = () => {
         firebase
             .firestore()
             .collection('rooms')
-            .doc(uid)
+            .doc('uid')
             .collection('messages')
             .orderBy('createdAt')
             .onSnapshot((snapshot) => {
@@ -91,10 +91,10 @@ export default ChatScreen = () => {
             <ExpoStatusBar style="auto" />
             <Header 
                 placement="center"
- //               leftComponent={{ icon: 'menu', color: '#94aa44' }}
-                centerComponent={{ text: 'メンターチャット', style: { marginTop: -20, fontSize: 18, color: '#3d3d3d' } }}
- //               rightComponent={{ icon: 'home', color: '#94aa44' }}
-                containerStyle={{ marginTop: 0, paddingBottom: 10}}
+    //           leftComponent={{ icon: 'home', color: '#94aa44'}
+                centerComponent={{ text: 'メンターチャット', style: { marginTop: 0, fontSize: 18, color: '#3d3d3d' } }}
+    //            rightComponent={{ icon: 'menu', color: '#94aa44' }}
+                containerStyle={{ marginTop: -20, paddingBottom: 10}}
                 backgroundColor='#eff4ef'
     //           backgroundImage={require('../../assets/images/chatback.png')}
                 backgroundImageStyle={{height: 0, flex: 1 ,resizeMode: 'contain' ,bottom: 0}}
@@ -106,7 +106,7 @@ export default ChatScreen = () => {
                 keyboardVerticalOffset={ 85 }
             >
                 <FlatList
-                    style={styles.messagesContainer}
+                    style={styles.messagesContainer}expo install expo-av
                     data={messages}
                     inverted={true}
                     renderItem={({ item }: { item: Message }) => (
