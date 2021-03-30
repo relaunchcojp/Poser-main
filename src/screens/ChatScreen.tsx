@@ -23,7 +23,7 @@ import { ChatList } from '../types/chatList';
 
 
 
-export default ChatScreen = () => {
+export const ChatScreen = () => {
     const [text, setText] = useState<string>('');
     const [messages, setMessages] = useState<Message[]>([]);
     const [userId, setUserId] = useState<string | undefined>();
@@ -91,9 +91,9 @@ export default ChatScreen = () => {
             <ExpoStatusBar style="auto" />
             <Header 
                 placement="center"
- //               leftComponent={{ icon: 'menu', color: '#94aa44' }}
+               leftComponent={{ icon: 'menu', color: '#94aa44'}}
                 centerComponent={{ text: 'メンターチャット', style: { marginTop: -20, fontSize: 18, color: '#3d3d3d' } }}
- //               rightComponent={{ icon: 'home', color: '#94aa44' }}
+                rightComponent={{ icon: 'home', color: '#94aa44' }}
                 containerStyle={{ marginTop: 0, paddingBottom: 10}}
                 backgroundColor='#eff4ef'
     //           backgroundImage={require('../../assets/images/chatback.png')}

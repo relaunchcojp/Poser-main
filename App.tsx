@@ -14,7 +14,7 @@ import LogInScreen from './src/screens/LogInScreen';
 import SingUpScreen from './src/screens/SingUpScreen';
 import StartScreen from './src/screens/StartScreen';
 import TrainingScreen from './src/screens/TrainingScreen';
-import ChatScreen from './src/screens/ChatScreen';
+import {ChatScreen} from './src/screens/ChatScreen';
 import UserStatusCreate from './src/screens/UserStatusCreate';
 
 // import {firebaseConfig} from './env';
@@ -35,6 +35,7 @@ if (firebase.apps.length == 0) {
 }
 
 const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
