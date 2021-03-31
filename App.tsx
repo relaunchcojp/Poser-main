@@ -20,7 +20,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // import {firebaseConfig} from './env';
 
-
 const firebaseConfig = {
    apiKey: "AIzaSyDr1mSS0bwstFpWoYzwmppXlidWe2n7JeU",
    authDomain: "poserappdev.firebaseapp.com",
@@ -45,6 +44,7 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="LoginScreen"
         screenOptions={{
+          
           headerStyle: { backgroundColor: '#eff4ef' },
           headerTitleStyle: { color: '#000000' },
           headerTitle: 'Poser',
@@ -63,8 +63,9 @@ export default function App() {
           name="LogIn"
           component={LogInScreen}
           options={{
+            headerShown: false,
             cardStyleInterpolator:
-              CardStyleInterpolators.forFadeFromBottomAndroid,
+            CardStyleInterpolators.forFadeFromBottomAndroid,
           }}
         />
         <Stack.Screen
