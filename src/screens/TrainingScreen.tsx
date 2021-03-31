@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image , TouchableOpacity} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { string } from 'prop-types';
@@ -19,7 +18,7 @@ export default function TrainingScreen(props:any) {
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
- //   require('../../assets/Voice/TrainingDemo.m4a'),
+    require('../../assets/Voice/TrainingDemo.m4a'),
     );
     setSound(sound);
     console.log('Playing Sound');
