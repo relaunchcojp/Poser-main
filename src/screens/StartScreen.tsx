@@ -13,14 +13,15 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+import BackButton from '../components/BackButton';
 import LogOutButton from '../components/LogOutButton';
 import CircleCreate from '../components/CircleCreate';
 import BellButton from '../components/BellButton';
 import Loading from '../components/Loading';
 
 const { width, height, scale } = Dimensions.get('window');
-
 
 export default function StartScreen(props: { navigation: any; }) {
   const { navigation } = props;

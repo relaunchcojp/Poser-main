@@ -4,19 +4,22 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import firebase from 'firebase';
+import {
+  createDrawerNavigator,
+  DrawerNavigationProp,
+} from "@react-navigation/drawer";
 
-import MemoEditScreen from './src/screens/MemoEditScreen';
-import MemoListScreen from './src/screens/MemoListScreen';
-import MemoCreateScreen from './src/screens/MemoCreateScreen';
-import MemoDetailScreen from './src/screens/MemoDetailScreen';
+import firebase from 'firebase';
+import { AntDesign } from '@expo/vector-icons';
+
 import LogInScreen from './src/screens/LogInScreen';
 import SingUpScreen from './src/screens/SingUpScreen';
 import StartScreen from './src/screens/StartScreen';
 import TrainingScreen from './src/screens/TrainingScreen';
 import { ChatScreen } from './src/screens/ChatScreen';
 import UserStatusCreate from './src/screens/UserStatusCreate';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Button from './src/components/Button';
 
 // import {firebaseConfig} from './env';
 
@@ -44,21 +47,20 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="LoginScreen"
         screenOptions={{
-          
-          headerStyle: { backgroundColor: '#eff4ef' },
-          headerTitleStyle: { color: '#000000' },
-          headerTitle: 'Poser',
-          headerTintColor: '#333',
-          headerBackTitle: 'Back',
+          //ヘッダータイトルのスタイル
+          headerStyle: { backgroundColor: '#eff4ef'},
+          headerTitleStyle: { color: '#000000' ,fontSize:20,marginBottom:hp('2%')},
+          headerTitle: '',
+          //戻るボタンのスタイル
+          headerBackTitleVisible: false,
+          //ヘッダーの高さ
+          headerStatusBarHeight: hp('10%'),
+          //遷移時のアニメーション
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           gestureEnabled: true,
           gestureDirection: 'horizontal',
         }}
       >
-        <Stack.Screen name="MemoList" component={MemoListScreen} />
-        <Stack.Screen name="MemoEdit" component={MemoEditScreen} />
-        <Stack.Screen name="MemoCreate" component={MemoCreateScreen} />
-        <Stack.Screen name="MemoDetail" component={MemoDetailScreen} />
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -76,12 +78,23 @@ export default function App() {
               CardStyleInterpolators.forFadeFromBottomAndroid,
           }}
         />
-        <Stack.Screen name="TrainingScreen" component={TrainingScreen} />
+        <Stack.Screen
+          name="TrainingScreen"
+          component={TrainingScreen}
+          options={{
+            headerTitle:'ポージング',
+          }}
+        />
         <Stack.Screen name="UserStatusCreate" component={UserStatusCreate} />
         <Stack.Screen name="StartScreen" component={StartScreen} />
-        <Stack.Screen name="ChatScreen" component={ChatScreen} />
+        <Stack.Screen
+          name="ChatScreen"
+          component={ChatScreen}
+          options={{
+            headerTitle: 'メンターチャットルーム',
+          }}
+        />
       </Stack.Navigator>
-      
     </NavigationContainer>
   );
 }
