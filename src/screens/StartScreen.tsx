@@ -13,10 +13,10 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Ionicons } from '@expo/vector-icons'; 
 
-import BackButton from '../components/BackButton';
 import LogOutButton from '../components/LogOutButton';
+import DrawerMenu from '../components/DrawerMenu'
 import CircleCreate from '../components/CircleCreate';
 import BellButton from '../components/BellButton';
 import Loading from '../components/Loading';
@@ -29,7 +29,7 @@ export default function StartScreen(props: { navigation: any; }) {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <LogOutButton />,
+     headerRight: () => <DrawerMenu />,
     });
   }, []);
 

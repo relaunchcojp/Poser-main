@@ -4,18 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export default function LogOutButton() {
+export default function BackButton() {
   const navigation = useNavigation();
-
-  function handlePress() {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'StartScreen' }],
-    });
-  }
-
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.container}>
+    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.container}>
       <AntDesign name="left" size={40} color="#f8b500" />
     </TouchableOpacity>
   );

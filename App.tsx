@@ -20,6 +20,7 @@ import { ChatScreen } from './src/screens/ChatScreen';
 import UserStatusCreate from './src/screens/UserStatusCreate';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Button from './src/components/Button';
+import logoutButton from './src/components/LogOutButton';
 
 // import {firebaseConfig} from './env';
 
@@ -39,62 +40,70 @@ if (firebase.apps.length == 0) {
 }
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
+function HomeScreen() {
+  return (
+    <Stack.Navigator
+      initialRouteName="LoginScreen"
+      screenOptions={{
+        //ヘッダータイトルのスタイル
+        headerStyle: { backgroundColor: '#eff4ef'},
+        headerTitleStyle: { color: '#000000' ,fontSize:20,marginBottom:hp('2%')},
+        headerTitle: '',
+        //戻るボタンのスタイル
+        headerBackTitleVisible: false,
+        //ヘッダーの高さ
+        headerStatusBarHeight: hp('10%'),
+        //遷移時のアニメーション
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+      }}
+    >
+      <Stack.Screen
+        name="LogIn"
+        component={LogInScreen}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator:
+          CardStyleInterpolators.forFadeFromBottomAndroid,
+        }}
+      />
+      <Stack.Screen
+        name="SingUp"
+        component={SingUpScreen}
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forFadeFromBottomAndroid,
+        }}
+      />
+      <Stack.Screen
+        name="TrainingScreen"
+        component={TrainingScreen}
+        options={{
+          headerTitle:'ポージング',
+        }}
+      />
+      <Stack.Screen name="UserStatusCreate" component={UserStatusCreate} />
+      <Stack.Screen name="StartScreen" component={StartScreen} />
+      <Stack.Screen
+        name="ChatScreen"
+        component={ChatScreen}
+        options={{
+          headerTitle: 'メンターチャットルーム',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="LoginScreen"
-        screenOptions={{
-          //ヘッダータイトルのスタイル
-          headerStyle: { backgroundColor: '#eff4ef'},
-          headerTitleStyle: { color: '#000000' ,fontSize:20,marginBottom:hp('2%')},
-          headerTitle: '',
-          //戻るボタンのスタイル
-          headerBackTitleVisible: false,
-          //ヘッダーの高さ
-          headerStatusBarHeight: hp('10%'),
-          //遷移時のアニメーション
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          gestureEnabled: true,
-          gestureDirection: 'horizontal',
-        }}
-      >
-        <Stack.Screen
-          name="LogIn"
-          component={LogInScreen}
-          options={{
-            headerShown: false,
-            cardStyleInterpolator:
-            CardStyleInterpolators.forFadeFromBottomAndroid,
-          }}
-        />
-        <Stack.Screen
-          name="SingUp"
-          component={SingUpScreen}
-          options={{
-            cardStyleInterpolator:
-              CardStyleInterpolators.forFadeFromBottomAndroid,
-          }}
-        />
-        <Stack.Screen
-          name="TrainingScreen"
-          component={TrainingScreen}
-          options={{
-            headerTitle:'ポージング',
-          }}
-        />
-        <Stack.Screen name="UserStatusCreate" component={UserStatusCreate} />
-        <Stack.Screen name="StartScreen" component={StartScreen} />
-        <Stack.Screen
-          name="ChatScreen"
-          component={ChatScreen}
-          options={{
-            headerTitle: 'メンターチャットルーム',
-          }}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="logout" component={logoutButton} />
+      </Drawer.Navigator>
     </NavigationContainer>
-  );
+  )
 }
