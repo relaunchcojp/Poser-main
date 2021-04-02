@@ -13,14 +13,15 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Ionicons } from '@expo/vector-icons'; 
 
 import LogOutButton from '../components/LogOutButton';
+import DrawerMenu from '../components/DrawerMenu'
 import CircleCreate from '../components/CircleCreate';
 import BellButton from '../components/BellButton';
 import Loading from '../components/Loading';
 
 const { width, height, scale } = Dimensions.get('window');
-
 
 export default function StartScreen(props: { navigation: any; }) {
   const { navigation } = props;
@@ -28,7 +29,7 @@ export default function StartScreen(props: { navigation: any; }) {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <LogOutButton />,
+     headerRight: () => <DrawerMenu />,
     });
   }, []);
 

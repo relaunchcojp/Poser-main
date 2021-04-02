@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import {Button,CheckBox}from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import {bool} from 'prop-types';
 import firebase from 'firebase';
 
 const { width, height, scale } = Dimensions.get('window');
@@ -56,7 +55,7 @@ export default function LoginInScreen(props: { navigation: any; }) {
     <View style={styles.container}>
       <Image
         source={require('../../assets/img/img_logInBack.png')}
-        style={{ width: wp('100%'), resizeMode: 'contain', height: hp('35%') }}
+        style={{ width: wp('101%'), height: hp('35%') }}
       />
       <View style={styles.inner}>
         <View style={styles.ID}>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image , TouchableOpacity} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { string } from 'prop-types';
@@ -8,18 +7,22 @@ import { SliderBox } from 'react-native-image-slider-box';
 import LottieView from 'lottie-react-native';
 import { Audio } from 'expo-av';
 
+import BackButton from '../components/BackButton'
+
 const images = [
   require('../../assets/Training/1/poser1.jpg'),
   require('../../assets/Training/1/poser2.jpg'),
   require('../../assets/Training/1/poser3.jpg'),
   require('../../assets/Training/1/poser4.jpg'),
 ];
-export default function TrainingScreen(props:any) {
+export default function TrainingScreen(props: any) {
   const [sound, setSound] = useState();
+  const { navigation } = props;
+
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
- //   require('../../assets/Voice/TrainingDemo.m4a'),
+    require('../../assets/Voice/TrainingDemo.m4a'),
     );
     setSound(sound);
     console.log('Playing Sound');
@@ -32,6 +35,12 @@ export default function TrainingScreen(props:any) {
       }
       : undefined;
   }, [sound]);
+
+  useEffect(() => {
+        navigation.setOptions({
+            headerLeft:() => <BackButton/>,
+        });
+    }, []);
 
   return (
     <View style={styles.container}>

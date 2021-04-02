@@ -20,13 +20,14 @@ import { getMessageDocRef, getChatListDocRef, getUserId } from '../lib/firebase'
 import { Message } from '../types/message';
 import { MessageItem } from '../components/MessageItem';
 import { ChatList } from '../types/chatList';
+import BackButton from '../components/BackButton'
 
 
-
-export const ChatScreen = () => {
+export const ChatScreen = (props:any) => {
     const [text, setText] = useState<string>('');
     const [messages, setMessages] = useState<Message[]>([]);
     const [userId, setUserId] = useState<string | undefined>();
+    const { navigation } = props;
 
 
     const sendMessage = async (value: string, uid: string | undefined) => {
@@ -82,6 +83,9 @@ export const ChatScreen = () => {
     };
 
     useEffect(() => {
+        navigation.setOptions({
+            headerLeft:() => <BackButton/>,
+        });
         signin();
         getMessages();
     }, []);
@@ -89,7 +93,7 @@ export const ChatScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <ExpoStatusBar style="auto" />
-            <Header 
+{/*             <Header 
                 placement="center"
     //           leftComponent={{ icon: 'home', color: '#94aa44'}
                 centerComponent={{ text: 'メンターチャット', style: { marginTop: 0, fontSize: 18, color: '#3d3d3d' } }}
@@ -99,7 +103,7 @@ export const ChatScreen = () => {
     //           backgroundImage={require('../../assets/images/chatback.png')}
                 backgroundImageStyle={{height: 0, flex: 1 ,resizeMode: 'contain' ,bottom: 0}}
                 >
-             </ Header>
+             </ Header> */}
             <KeyboardAvoidingView
                 style={styles.keyboardAvoidingView}
                 behavior="padding"
