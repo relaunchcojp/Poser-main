@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { useWindowDimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   createStackNavigator,
@@ -98,11 +99,25 @@ function HomeScreen() {
 }
 const Drawer = createDrawerNavigator();
 export default function App() {
+
+  const dimensions = useWindowDimensions();
+
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="logout" component={logoutButton} />
+      <Drawer.Navigator
+        initialRouteName="Home"
+        drawerPosition="right"
+        drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}>
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ drawerLabel: 'Home' }}
+        />
+        <Drawer.Screen
+          name="logout"
+          component={LogInScreen}
+          options={{ drawerLabel: 'logout' }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   )

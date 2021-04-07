@@ -38,7 +38,7 @@ export default function DrawerMenu() {
   }
 
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.container}>
+    <TouchableOpacity onPress={navigation.openDrawer} style={styles.container}>
       <Ionicons name="reorder-two-outline" size={40} color="#f8b500" />
     </TouchableOpacity>
   );
