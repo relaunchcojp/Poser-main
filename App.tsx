@@ -11,7 +11,6 @@ import {
 } from "@react-navigation/drawer";
 
 import firebase from 'firebase';
-import { AntDesign } from '@expo/vector-icons';
 
 import LogInScreen from './src/screens/LogInScreen';
 import SingUpScreen from './src/screens/SingUpScreen';
@@ -19,9 +18,8 @@ import StartScreen from './src/screens/StartScreen';
 import TrainingScreen from './src/screens/TrainingScreen';
 import { ChatScreen } from './src/screens/ChatScreen';
 import UserStatusCreate from './src/screens/UserStatusCreate';
+import ActiveHistory from './src/screens/ActiveHistory';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import Button from './src/components/Button';
-import logoutButton from './src/components/LogOutButton';
 
 // import {firebaseConfig} from './env';
 
@@ -92,6 +90,13 @@ function HomeScreen() {
         component={ChatScreen}
         options={{
           headerTitle: 'メンターチャットルーム',
+        }}
+      />
+      <Stack.Screen
+        name="ActiveHistory"
+        component={ActiveHistory}
+        options={{
+          headerTitle:'活動履歴',
         }}
       />
     </Stack.Navigator>

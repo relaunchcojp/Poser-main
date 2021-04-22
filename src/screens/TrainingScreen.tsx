@@ -7,6 +7,8 @@ import { SliderBox } from 'react-native-image-slider-box';
 import LottieView from 'lottie-react-native';
 import { Audio } from 'expo-av';
 
+const soundObject = new Audio.Sound();
+
 import BackButton from '../components/BackButton'
 
 const images = [
@@ -15,6 +17,37 @@ const images = [
   require('../../assets/Training/1/poser3.jpg'),
   require('../../assets/Training/1/poser4.jpg'),
 ];
+const imagesStandingBacis = [
+  require('../../assets/Training/立位_基本/0-1.jpg'),
+  require('../../assets/Training/立位_基本/0-2.jpg'),
+  require('../../assets/Training/立位_基本/0-3.jpg'),
+  require('../../assets/Training/立位_基本/0-4.jpg'),
+];
+const imagesStanding1 = [
+  require('../../assets/Training/立位_1/1-1.jpg'),
+  require('../../assets/Training/立位_1/1-2.jpg'),
+  require('../../assets/Training/立位_1/1-3.jpg'),
+  require('../../assets/Training/立位_1/1-4.jpg'),
+];
+const imagesStanding2 = [
+  require('../../assets/Training/立位_2/2-1.jpg'),
+  require('../../assets/Training/立位_2/2-2.jpg'),
+  require('../../assets/Training/立位_2/2-3.jpg'),
+  require('../../assets/Training/立位_2/2-4.jpg'),
+];
+const imagesStanding4 = [
+  require('../../assets/Training/立位_4/4-1.jpg'),
+  require('../../assets/Training/立位_4/4-2.jpg'),
+  require('../../assets/Training/立位_4/4-3.jpg'),
+  require('../../assets/Training/立位_4/4-4.jpg'),
+];
+const imagesStanding5 = [
+  require('../../assets/Training/立位_5/5-1.jpg'),
+  require('../../assets/Training/立位_5/5-2.jpg'),
+  require('../../assets/Training/立位_5/5-3.jpg'),
+  require('../../assets/Training/立位_5/5-4.jpg'),
+];
+
 export default function TrainingScreen(props: any) {
   const [sound, setSound] = useState();
   const { navigation } = props;
@@ -22,19 +55,22 @@ export default function TrainingScreen(props: any) {
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
-    require('../../assets/Voice/TrainingDemo.m4a'),
+    require('../../assets/Voice/立位ヨコ_基本姿勢.mp3'),
+        {
+        shouldPlay:true,
+      }
     );
-    setSound(sound);
+    setSound(sound); 
     console.log('Playing Sound');
     await sound.playAsync(); }
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log('Unloading Sound');
-          sound.unloadAsync();
-      }
-      : undefined;
-  }, [sound]);
+    React.useEffect(() => {
+      return sound
+        ? () => {
+            console.log('Unloading Sound');
+            sound.unloadAsync();
+        }
+        : undefined;
+    }, [sound]);
 
   useEffect(() => {
         navigation.setOptions({
@@ -52,12 +88,14 @@ export default function TrainingScreen(props: any) {
         </View>
         <View style={styles.trainingImg}>
           <View style={styles.trainingImgSize}>
-            <SliderBox images={images}
+            <SliderBox images={imagesStandingBacis}
               sliderBoxHeight={hp('57%')}
               parentWidth={wp('80%')}
               circleLoop
               resizeMethod={'resize'}
               resizeMode={'cover'}
+              autoplay
+              autoplayInterval={10000}
             />
           </View>
           <LottieView
@@ -94,14 +132,6 @@ export default function TrainingScreen(props: any) {
           onPress={playSound}
           style={styles.trainingButton}
         />
-{/*         <View style={styles.trainingProgressGage}>
-          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
-          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
-          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
-          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
-          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
-          <FontAwesome name=“circle” size={30} color=“#FFE100”></FontAwesome>
-        </View> */}
       </View>
     </View>
   );

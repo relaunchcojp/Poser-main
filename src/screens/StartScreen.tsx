@@ -13,9 +13,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { Ionicons } from '@expo/vector-icons'; 
 
-import LogOutButton from '../components/LogOutButton';
 import DrawerMenu from '../components/DrawerMenu'
 import CircleCreate from '../components/CircleCreate';
 import BellButton from '../components/BellButton';
@@ -65,7 +63,7 @@ export default function StartScreen(props: { navigation: any; }) {
               </TouchableOpacity>
             </View>
             <View style={styles.innerButton}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => { navigation.navigate('ActiveHistory');}}>
                 <Image
                   style={styles.ButtonSize}
                   source={require('../../assets/btn/btn_activeLog.png')}
