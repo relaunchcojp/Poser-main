@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image , TouchableOpacity} from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, Text, StyleSheet, Image , TouchableOpacity,Button} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { string } from 'prop-types';
 import { SliderBox } from 'react-native-image-slider-box';
@@ -124,37 +123,28 @@ export default function TrainingScreen(props: any) {
         </View>
       </View>
       <View style={styles.traininProgress}>
-        <Button
-          containerStyle={{
-            margin:3,
-          }}
-          raised
-          title=　'トレーニングをスタート'
+        <TouchableOpacity style={styles.AnoterTrainingStartButton}
           onPress={playSound}
-          style={styles.trainingButton}
-        />
+        >
+          <Text style={styles.trainingButtonText}>立位基本トレーニングを始める</Text></TouchableOpacity>
       </View>
         <View style={styles.AnoterTraining}>
-          <Button style={styles.AnoterTrainingButton}
-          raised
-          title='1'
+        <TouchableOpacity style={styles.AnoterTrainingButton}
           onPress={() => { navigation.navigate('TrainingScreenStand1');}}
-          />
-          <Button
-          raised
-          title='2'
+        >
+          <Text style={styles.trainingButtonText}>1</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.AnoterTrainingButton}
           onPress={() => { navigation.navigate('TrainingScreenStand2');}}
-          />
-          <Button
-          raised
-          title='4'
+        >
+          <Text style={styles.trainingButtonText}>2</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.AnoterTrainingButton}
           onPress={() => { navigation.navigate('TrainingScreenStand4');}}
-          />
-          <Button
-          raised
-          title='5'
+        >
+          <Text style={styles.trainingButtonText}>3</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.AnoterTrainingButton}
           onPress={() => { navigation.navigate('TrainingScreenStand5');}}
-          />
+        >
+          <Text style={styles.trainingButtonText}>4</Text></TouchableOpacity>
         </View>
     </View>
   );
@@ -193,7 +183,8 @@ const styles = StyleSheet.create({
   },
   trainingMessage: {
     fontSize: 18,
-    margin:1,
+    margin: 1,
+    color: '#ffffff'
   },
   trainingImg: {
     justifyContent: 'center',
@@ -229,6 +220,8 @@ const styles = StyleSheet.create({
   trainingButton: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(146, 195, 51, 0.9)',
+    borderRadius: 50,
   },
   AnoterTraining: {
     flex: 1,
@@ -237,6 +230,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: -hp('5%')
   },
+  AnoterTrainingStartButton: {
+    backgroundColor: 'rgba(146, 195, 51, 0.9)',
+    borderRadius: 50,
+    padding: wp('2%'),
+    paddingHorizontal:wp('5%'),
+    margin: wp('2%'),
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
   AnoterTrainingButton: {
+    backgroundColor: 'rgba(146, 195, 51, 0.9)',
+    borderRadius: 50,
+    padding: wp('2%'),
+    paddingHorizontal:wp('5%'),
+    margin: wp('2%'),
+    marginTop: -hp('0.1%'),
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+  trainingButtonText: {
+    fontSize: wp('4%'),
+    color:'#ffffff'
   }
 });

@@ -123,15 +123,10 @@ export default function TrainingScreen(props: any) {
         </View>
       </View>
       <View style={styles.traininProgress}>
-        <Button
-          containerStyle={{
-            margin:3,
-          }}
-          raised
-          title=　'トレーニングをスタート'
+        <TouchableOpacity style={styles.AnoterTrainingStartButton}
           onPress={playSound}
-          style={styles.trainingButton}
-        />
+        >
+          <Text style={styles.trainingButtonText}>立位トレーニング3を始める</Text></TouchableOpacity>
       </View>
     </View>
   );
@@ -170,7 +165,8 @@ const styles = StyleSheet.create({
   },
   trainingMessage: {
     fontSize: 18,
-    margin:1,
+    margin: 1,
+    color: '#ffffff'
   },
   trainingImg: {
     justifyContent: 'center',
@@ -206,5 +202,20 @@ const styles = StyleSheet.create({
   trainingButton: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+    AnoterTrainingStartButton: {
+    backgroundColor: 'rgba(146, 195, 51, 0.9)',
+    borderRadius: 50,
+    padding: wp('2%'),
+    paddingHorizontal:wp('5%'),
+    margin: wp('2%'),
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+  trainingButtonText: {
+    fontSize: wp('4%'),
+    color:'#ffffff'
   }
 });

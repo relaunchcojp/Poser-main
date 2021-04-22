@@ -86,7 +86,7 @@ function HomeScreen() {
         name="TrainingScreen"
         component={TrainingScreen}
         options={{
-          headerTitle:'ポージング',
+          headerTitle:'ポージング-立位',
         }}
       />
       <Stack.Screen name="UserStatusCreate" component={UserStatusCreate} />
@@ -123,14 +123,14 @@ function HomeScreen() {
         name="TrainingScreenStand4"
         component={TrainingScreenStand4}
         options={{
-          headerTitle:'立位ヨコ_ポーズ4',
+          headerTitle:'立位ヨコ_ポーズ3',
         }}
       />
       <Stack.Screen
         name="TrainingScreenStand5"
         component={TrainingScreenStand5}
         options={{
-          headerTitle:'立位ヨコ_ポーズ5',
+          headerTitle:'立位ヨコ_ポーズ4',
         }}
       />
     </Stack.Navigator>

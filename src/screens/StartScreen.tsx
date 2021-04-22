@@ -37,38 +37,13 @@ export default function StartScreen(props: { navigation: any; }) {
     <View style={styles.container}>
         <Loading isLoading={isLoading}/>
       <View>
+        <Image　style={styles.calldender}
+          source={require('../../assets/img/img_callender.png')}
+          />
+      </View>
+      <View>
 
       </View>
-{/*       <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.horizonScroll}>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-        <Text style={styles.horizonText}>1</Text>
-      </ScrollView> */}
       <View style={styles.ActiveCircle}>
         <BellButton name="bell" />
         <Image
@@ -212,6 +187,14 @@ const styles = StyleSheet.create({
     margin: hp('0.5%'),
     marginTop:-hp('1%'),
     padding:hp('0.5%')
+  },
+  calldender: {
+    height:hp('9%'),
+    width: wp('100%'),
+    resizeMode: 'contain',
+    position: 'absolute',
+    marginTop: -hp('1%'),
+    
   }
 });
 

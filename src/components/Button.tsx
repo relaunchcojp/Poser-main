@@ -24,7 +24,7 @@ Button.defalutProps = {
 const styles = StyleSheet.create({
   ButtonContainer: {
     backgroundColor: 'rgba(146, 195, 51, 0.9)',
-    borderRadius: 4,
+    borderRadius: 50,
     alignSelf: 'flex-start',
     marginBottom: 24,
   },

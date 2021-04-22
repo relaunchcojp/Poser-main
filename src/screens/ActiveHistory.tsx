@@ -34,7 +34,9 @@ export default function ActiveHistory(props: any) {
         </Text>
       </View>
       {/* トレーニング表示のかたまり */}
-      <View>
+      <TouchableOpacity
+        onPress={() => { navigation.navigate('TrainingScreen'); }}
+      >
         <View style={styles.ActiveHistoryIndex}>
           <View style={styles.circleStyle}>
             <CircleActive name="circle" colorName="#b9c42f"/>
@@ -54,24 +56,24 @@ export default function ActiveHistory(props: any) {
           <View style={styles.ActiveHistoryBodyImgBox}>
             <Image
               style={styles.ActiveHistoryBodyOutImg}
-              source={require('../../assets/Training/1/poser1.jpg')}
+              source={require('../../assets/Training/立位_基本/0-1.jpg')}
             />
             <Text style={styles.ActiveHistoryBodyTxt}>実行中のトレーニング</Text>
           </View>
           <View style={styles.ActiveHistoryBodyShare}>
             <Image
               style={styles.ActiveHistoryBodyShareImg}
-              source={require('../../assets/Training/1/poser1.jpg')}
+              source={require('../../assets/Training/立位_基本/0-2.jpg')}
             />
             <Image
               style={styles.ActiveHistoryBodyShareImg}
-              source={require('../../assets/Training/1/poser2.jpg')}
+              source={require('../../assets/Training/立位_基本/0-4.jpg')}
             />
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
       {/* トレーニング表示のかたまり */}
-      <View>
+      {/* <View>
         <View style={styles.ActiveHistoryIndex}>
           <View style={styles.circleStyle}>
             <CircleActive name="circle" colorName="#4db56a"/>
@@ -118,7 +120,7 @@ export default function ActiveHistory(props: any) {
             </View>
           </View>
         </View>
-      </View>
+      </View> */}
 {/*       <View>
         <View style={styles.ActiveHistoryIndex}>
           <View style={styles.circleStyle}>
