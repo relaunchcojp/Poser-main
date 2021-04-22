@@ -9,7 +9,7 @@ export default function CircleButton(props) {
   const { style, name, onPress } = props;
   return (
     <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
-      <FontAwesome name={name} size={height * 0.12} color="#94AA44" />
+      <FontAwesome name={name} size={height * 0.09} color="#94AA44" />
     </TouchableOpacity>
   );
 }

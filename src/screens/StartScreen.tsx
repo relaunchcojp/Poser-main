@@ -11,6 +11,7 @@ import {
   Image,
   Dimensions,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -37,6 +38,36 @@ export default function StartScreen(props: { navigation: any; }) {
       <View>
 
       </View>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={styles.horizonScroll}>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+        <Text style={styles.horizonText}>1</Text>
+      </ScrollView>
       <View style={styles.ActiveCircle}>
         <BellButton name="bell" />
         <Image
@@ -47,8 +78,8 @@ export default function StartScreen(props: { navigation: any; }) {
         </View>
       </View>
       <View style={styles.userDataDisplay}>
-        <Text style={styles.userName}>name</Text>
-        <Text style={styles.userID}>ID:111111</Text>
+        <Text style={styles.userName}>鈴木</Text>
+        <Text style={styles.userID}>ID:000000</Text>
         <CircleCreate name="circle" />
       </View>
       <View style={styles.IndexButtonUnder}>
@@ -117,7 +148,7 @@ const styles = StyleSheet.create({
   ActiveCircle: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: hp('4%'),
+    marginTop: hp('7%'),
   },
   innerButton: {
     transform: [{ rotate: '45deg' }],
@@ -127,24 +158,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingBottom: hp('6%'),
+    paddingBottom: hp('3%'),
+    height: hp('6.5%'),
+    position:'relative'
   },
   userName: {
     fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   userID: {
-    padding: 10,
-    fontSize: 10,
+    paddingLeft:wp('40%'),
+    fontSize: hp('2%'),
+    position: 'absolute',
+    letterSpacing: -1,
+    fontWeight: '100',
   },
   ButtonSize: {
-    width: wp('41%'),
+    width: wp('39%'),
     resizeMode: 'contain',
-    height: wp('41%'),
+    height: wp('39%'),
   },
   ActiveCircleSize: {
-    width: hp('32%'),
+    width: hp('34%'),
     resizeMode: 'contain',
-    height: hp('32%'),
+    height: hp('34%'),
   },
   shareBottom: {
     transform: [{ rotate: '45deg' }],
@@ -153,14 +192,25 @@ const styles = StyleSheet.create({
     top: 0 - hp('2%'),
   },
   shareButtonSize: {
-    width: hp('12%'),
+    width: hp('11%'),
     resizeMode: 'contain',
-    height: hp('12%'),
+    height: hp('11%'),
   },
   CircleInner: {
     position: 'absolute',
     justifyContent: 'center',
     alignItems:'center',
+  },
+  horizonScroll: {
+    width: wp('200%'),
+    height: hp('8%'),
+    position:'absolute',
+  },
+  horizonText: {
+    fontSize: hp('4%'),
+    margin: hp('0.5%'),
+    marginTop:-hp('1%'),
+    padding:hp('0.5%')
   }
 });
 

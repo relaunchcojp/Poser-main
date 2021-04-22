@@ -88,7 +88,7 @@ export default function TrainingScreen(props: any) {
         </View>
         <View style={styles.trainingImg}>
           <View style={styles.trainingImgSize}>
-            <SliderBox images={imagesStandingBacis}
+            <SliderBox images={imagesStanding5}
               sliderBoxHeight={hp('57%')}
               parentWidth={wp('80%')}
               circleLoop
