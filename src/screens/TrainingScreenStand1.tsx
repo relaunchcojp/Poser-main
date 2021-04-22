@@ -55,15 +55,14 @@ export default function TrainingScreen(props: any) {
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
-    require('../../assets/Voice/立位ヨコ_基本姿勢.mp3'),
+    require('../../assets/Voice/立位ヨコ_ポーズ１.mp3'),
         {
         shouldPlay:true,
       }
     );
     setSound(sound); 
     console.log('Playing Sound');
-    await sound.playAsync();
-  }
+    await sound.playAsync(); }
     React.useEffect(() => {
       return sound
         ? () => {
@@ -84,12 +83,14 @@ export default function TrainingScreen(props: any) {
       <View style={styles.trainingMenu}>
         <View style={styles.trainingInfo}>
           <Text style={styles.trainingMessage}>
-            ポールを横に置き、得意な足からゆっくりとポールに立ちます。 マイラブを意識し呼吸をしっかり感じながらゆっくりとポールの上に乗ってください。 手でバランスをとりながらゆっくり意識をします 呼吸は大丈夫ですか？ マイラブ見てますか？。
+            ゆっくりポールに乗り両手でバランスをとった後　右手をゆっくり胸の前で拝みましょう。
+            左手は自由に動かしても構いません。
+            全身を柔らかく使いながらバランスをとってみてください。
           </Text>
         </View>
         <View style={styles.trainingImg}>
           <View style={styles.trainingImgSize}>
-            <SliderBox images={imagesStandingBacis}
+            <SliderBox images={imagesStanding1}
               sliderBoxHeight={hp('57%')}
               parentWidth={wp('80%')}
               circleLoop
@@ -134,28 +135,6 @@ export default function TrainingScreen(props: any) {
           style={styles.trainingButton}
         />
       </View>
-        <View style={styles.AnoterTraining}>
-          <Button style={styles.AnoterTrainingButton}
-          raised
-          title='1'
-          onPress={() => { navigation.navigate('TrainingScreenStand1');}}
-          />
-          <Button
-          raised
-          title='2'
-          onPress={() => { navigation.navigate('TrainingScreenStand2');}}
-          />
-          <Button
-          raised
-          title='4'
-          onPress={() => { navigation.navigate('TrainingScreenStand4');}}
-          />
-          <Button
-          raised
-          title='5'
-          onPress={() => { navigation.navigate('TrainingScreenStand5');}}
-          />
-        </View>
     </View>
   );
 }
@@ -174,7 +153,7 @@ const styles = StyleSheet.create({
     margin: 15,
     backgroundColor: '#ffffff',
     borderRadius: 20,
-    height:hp('70%'),
+    height:hp('75%'),
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
@@ -229,14 +208,5 @@ const styles = StyleSheet.create({
   trainingButton: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  AnoterTraining: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: -hp('5%')
-  },
-  AnoterTrainingButton: {
   }
 });

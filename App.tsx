@@ -19,6 +19,12 @@ import TrainingScreen from './src/screens/TrainingScreen';
 import { ChatScreen } from './src/screens/ChatScreen';
 import UserStatusCreate from './src/screens/UserStatusCreate';
 import ActiveHistory from './src/screens/ActiveHistory';
+
+import TrainingScreenStand1 from './src/screens/TrainingScreenStand1';
+import TrainingScreenStand2 from './src/screens/TrainingScreenStand2';
+import TrainingScreenStand4 from './src/screens/TrainingScreenStand4';
+import TrainingScreenStand5 from './src/screens/TrainingScreenStand5';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 // import {firebaseConfig} from './env';
@@ -97,6 +103,34 @@ function HomeScreen() {
         component={ActiveHistory}
         options={{
           headerTitle:'活動履歴',
+        }}
+      />
+      <Stack.Screen
+        name="TrainingScreenStand1"
+        component={TrainingScreenStand1}
+        options={{
+          headerTitle:'立位ヨコ_ポーズ１',
+        }}
+      />
+      <Stack.Screen
+        name="TrainingScreenStand2"
+        component={TrainingScreenStand2}
+        options={{
+          headerTitle:'立位ヨコ_ポーズ2',
+        }}
+      />
+      <Stack.Screen
+        name="TrainingScreenStand4"
+        component={TrainingScreenStand4}
+        options={{
+          headerTitle:'立位ヨコ_ポーズ4',
+        }}
+      />
+      <Stack.Screen
+        name="TrainingScreenStand5"
+        component={TrainingScreenStand5}
+        options={{
+          headerTitle:'立位ヨコ_ポーズ5',
         }}
       />
     </Stack.Navigator>
