@@ -21,8 +21,8 @@ import * as firebase from 'firebase';
 import { name, photoUrl, getChatListDocRef, getUserId } from '../lib/firebase';
 import { ChatList } from '../types/chatList';
 import { ChatListItem } from '../components/ChatListItem';
-
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import KeyboardSafeView from '../components/KeyboardSafeView';
 
 
 export const ChatListScreen = () => {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         
         backgroundColor: '#eff4ef',
-        height: 32,
+        height: hp('3.6%'),
         flex: 1,
         borderRadius: 20,
         paddingHorizontal: 20,

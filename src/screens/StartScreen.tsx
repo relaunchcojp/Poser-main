@@ -12,16 +12,22 @@ import {
   Dimensions,
   KeyboardAvoidingView,
   ScrollView,
+  SliderBase,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import * as Progress from 'react-native-progress';
+
+import { getDate, addDays, subDays, format, add} from 'date-fns';
 
 import DrawerMenu from '../components/DrawerMenu'
 import CircleCreate from '../components/CircleCreate';
 import BellButton from '../components/BellButton';
 import Loading from '../components/Loading';
+import ProgressCircle from '../components/ProgressCircle';
+
+import Svg, { Rect ,Circle, G ,Defs,Use} from 'react-native-svg';
 
 const { width, height, scale } = Dimensions.get('window');
+const weekday = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
 export default function StartScreen(props: { navigation: any; }) {
   const { navigation } = props;
@@ -32,24 +38,69 @@ export default function StartScreen(props: { navigation: any; }) {
      headerRight: () => <DrawerMenu />,
     });
   }, []);
+  const currentIndex = 1;
 
   return (
     <View style={styles.container}>
-        <Loading isLoading={isLoading}/>
-      <View>
-        <Image　style={styles.calldender}
-          source={require('../../assets/img/img_callender.png')}
-          />
-      </View>
-      <View>
+      <Loading isLoading={isLoading} />
+      <View style={styles.scrollingWrapper}>
+        <View style={styles.calldender}>
+          <Svg width={wp('100%')} height={hp('10%')}>
+            <Rect
+              x={wp('13.9%')*2}
+              height={hp('12%')}
+              width={wp('20.85%')}
+              fill="lightgreen"
+              opacity="0.7"
+            />
+            <Rect
+              x={wp('50%')}
+              height={hp('12%')}
+              width={wp('20%')}
+              fill="gray"
+              opacity="0.2"
+            />
+          </Svg>
+        </View>
 
+        <View style={styles.scrollinglist}> 
+          <Text style={styles.callenderWeek}>{format(subDays(new Date(),3),'iii')}</Text>
+          <Text style={styles.callenderDays}>{getDate(subDays(new Date(),3))}</Text>
+        </View>
+        <View style={styles.scrollinglist}> 
+          <Text style={styles.callenderWeek}>{format(subDays(new Date(),2),'iii')}</Text>
+          <Text style={styles.callenderDays}>{getDate(subDays(new Date(),2))}</Text>
+        </View>
+        <View style={styles.scrollinglist}> 
+          <Text style={styles.callenderWeek}>{format(subDays(new Date(),1),'iii')}</Text>
+          <Text style={styles.callenderDays}>{getDate(subDays(new Date(),1))}</Text>
+        </View>
+        <View style={styles.scrollinglistToday}>
+          <Text style={styles.callenderWeek}>{format(new Date(),'iii')}</Text>
+          <Text style={styles.callenderDaysToday}>{getDate(new Date())}</Text>
+        </View>
+        <View style={styles.scrollinglist}> 
+          <Text style={styles.callenderWeek}>{format(addDays(new Date(),1),'iii')}</Text>
+          <Text style={styles.callenderDays}>{getDate(addDays(new Date(),1))}</Text>
+        </View>
+        <View style={styles.scrollinglist}> 
+          <Text style={styles.callenderWeek}>{format(addDays(new Date(),2),'iii')}</Text>
+          <Text style={styles.callenderDays}>{getDate(addDays(new Date(),2))}</Text>
+        </View>
+        <View style={styles.scrollinglist}> 
+          <Text style={styles.callenderWeek}>{format(addDays(new Date(),3),'iii')}</Text>
+          <Text style={styles.callenderDays}>{getDate(addDays(new Date(),3))}</Text>
+        </View>
       </View>
       <View style={styles.ActiveCircle}>
         <BellButton name="bell" />
-        <Image
+         <Image
           style={styles.ActiveCircleSize}
           source={require('../../assets/img/img_ActiveCircle.png')}
         />
+        <View style={styles.ActiveCircleProgress}>
+          <ProgressCircle />
+        </View>
         <View style={styles.CircleInner}>
         </View>
       </View>
@@ -124,7 +175,6 @@ const styles = StyleSheet.create({
   ActiveCircle: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: hp('7%'),
   },
   innerButton: {
     transform: [{ rotate: '45deg' }],
@@ -136,7 +186,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingBottom: hp('3%'),
     height: hp('6.5%'),
-    position:'relative'
+    position: 'relative'
   },
   userName: {
     fontSize: 30,
@@ -145,7 +195,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   userID: {
-    paddingLeft:wp('40%'),
+    paddingLeft: wp('40%'),
     fontSize: hp('2%'),
     position: 'absolute',
     letterSpacing: -1,
@@ -157,9 +207,11 @@ const styles = StyleSheet.create({
     height: wp('39%'),
   },
   ActiveCircleSize: {
-    width: hp('34%'),
+    width: hp('33%'),
     resizeMode: 'contain',
-    height: hp('34%'),
+    height: hp('33%'),
+    marginTop: 5,
+    marginLeft: -1,
   },
   shareBottom: {
     transform: [{ rotate: '45deg' }],
@@ -175,26 +227,69 @@ const styles = StyleSheet.create({
   CircleInner: {
     position: 'absolute',
     justifyContent: 'center',
-    alignItems:'center',
+    alignItems: 'center',
   },
   horizonScroll: {
     width: wp('200%'),
     height: hp('8%'),
-    position:'absolute',
+    position: 'absolute',
   },
   horizonText: {
     fontSize: hp('4%'),
     margin: hp('0.5%'),
-    marginTop:-hp('1%'),
-    padding:hp('0.5%')
+    marginTop: -hp('1%'),
+    padding: hp('0.5%')
   },
   calldender: {
-    height:hp('9%'),
+    height: hp('9%'),
     width: wp('100%'),
     resizeMode: 'contain',
     position: 'absolute',
     marginTop: -hp('1%'),
-    
+  },
+  ActiveCircleProgress: {
+    marginTop: hp('3%'),
+    marginBottom: hp('3%'),
+    resizeMode: 'contain',
+    position: 'absolute',
+  },
+  scrollingWrapper: {
+    flexDirection: 'row',
+    alignContent:'center',
+  },
+  scrollinglist: {
+    flexDirection: 'column',
+    height:hp('9%'),
+    width:wp('13.9%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  scrollinglistToday: {
+    flexDirection: 'column',
+    height:hp('9%'),
+    width:wp('13.9%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#b9c42f',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius:12,
+  },
+  callenderWeek: {
+    fontSize:15,
+  },
+  callenderDays: {
+    fontSize: 32,
+    marginTop:7,
+  },
+  callenderDaysToday: {
+    fontSize: 32,
+    marginTop: 7,
+    width: wp('9%'),
+    textAlign: 'center',
+    color: '#b9c42f',
+    fontWeight: '500',
+    borderRadius: wp('4.5%'),
+    overflow:'hidden',
+    backgroundColor:'#ffffff'
   }
-});
-
+}); 

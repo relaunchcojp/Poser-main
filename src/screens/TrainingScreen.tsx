@@ -61,8 +61,7 @@ export default function TrainingScreen(props: any) {
     );
     setSound(sound); 
     console.log('Playing Sound');
-    await sound.playAsync();
-  }
+    await sound.playAsync();}
     React.useEffect(() => {
       return sound
         ? () => {
@@ -130,19 +129,51 @@ export default function TrainingScreen(props: any) {
       </View>
         <View style={styles.AnoterTraining}>
         <TouchableOpacity style={styles.AnoterTrainingButton}
-          onPress={() => { navigation.navigate('TrainingScreenStand1');}}
+          onPress={() => {
+            if (typeof (sound) == "undefined") {
+              navigation.navigate('TrainingScreenStand1');
+            }
+            else {
+              sound.unloadAsync();
+              navigation.navigate('TrainingScreenStand1');
+            }
+          }}
         >
           <Text style={styles.trainingButtonText}>1</Text></TouchableOpacity>
         <TouchableOpacity style={styles.AnoterTrainingButton}
-          onPress={() => { navigation.navigate('TrainingScreenStand2');}}
+          onPress={() => {
+            if (typeof (sound) == "undefined") {
+              navigation.navigate('TrainingScreenStand2');
+            }
+            else {
+              sound.unloadAsync();
+              navigation.navigate('TrainingScreenStand2');
+            }
+          }}
         >
           <Text style={styles.trainingButtonText}>2</Text></TouchableOpacity>
         <TouchableOpacity style={styles.AnoterTrainingButton}
-          onPress={() => { navigation.navigate('TrainingScreenStand4');}}
+          onPress={() => {
+            if (typeof (sound) == "undefined") {
+              navigation.navigate('TrainingScreenStand4');
+            }
+            else {
+              sound.unloadAsync();
+              navigation.navigate('TrainingScreenStand4');
+            }
+          }}
         >
           <Text style={styles.trainingButtonText}>3</Text></TouchableOpacity>
         <TouchableOpacity style={styles.AnoterTrainingButton}
-          onPress={() => { navigation.navigate('TrainingScreenStand5');}}
+          onPress={() => {
+            if (typeof (sound) == "undefined") {
+              navigation.navigate('TrainingScreenStand5');
+            }
+            else {
+              sound.unloadAsync();
+              navigation.navigate('TrainingScreenStand5');
+            }
+          }}
         >
           <Text style={styles.trainingButtonText}>4</Text></TouchableOpacity>
         </View>
@@ -194,8 +225,7 @@ const styles = StyleSheet.create({
   trainingImgSize: {
     resizeMode: 'contain',
     height: '80%',
-    margin: 0,
-    
+    marginTop: 0,
   },
   traininProgress: {
     flexDirection: 'row',

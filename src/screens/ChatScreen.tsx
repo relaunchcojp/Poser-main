@@ -21,7 +21,8 @@ import { Message } from '../types/message';
 import { MessageItem } from '../components/MessageItem';
 import { ChatList } from '../types/chatList';
 import BackButton from '../components/BackButton'
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import KeyboardSafeView from '../components/KeyboardSafeView';
 
 export const ChatScreen = (props:any) => {
     const [text, setText] = useState<string>('');
@@ -107,7 +108,7 @@ export const ChatScreen = (props:any) => {
             <KeyboardAvoidingView
                 style={styles.keyboardAvoidingView}
                 behavior="padding"
-                keyboardVerticalOffset={ 85 }
+                keyboardVerticalOffset={ hp('15%') }
             >
                 <FlatList
                     style={styles.messagesContainer}expo install expo-av
@@ -135,7 +136,7 @@ export const ChatScreen = (props:any) => {
                     <Button
                         title="送 信"
                         type="solid"
-                        buttonStyle={{width:70, height:32, backgroundColor:'#8fc31f',padding: 5,borderRadius: 20}}
+                        buttonStyle={{width:70, height:hp('3.6%'), backgroundColor:'#8fc31f',padding: 5,borderRadius: 20}}
                         onPress={() => {
                             sendMessage(text, userId);
                         }}                    />
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         
         backgroundColor: '#eff4ef',
-        height: 32,
+        height: hp('3.6%'),
         flex: 1,
         borderRadius: 20,
         paddingHorizontal: 20,

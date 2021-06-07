@@ -9,6 +9,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import BackButton from '../components/BackButton'
 
+import {CircleProgress} from 'react-gradient-progress'
 
 export default function ActiveHistory(props: any) {
   const [sound, setSound] = useState();
@@ -34,25 +35,26 @@ export default function ActiveHistory(props: any) {
         </Text>
       </View>
       {/* トレーニング表示のかたまり */}
-      <TouchableOpacity
-        onPress={() => { navigation.navigate('TrainingScreen'); }}
-      >
+
         <View style={styles.ActiveHistoryIndex}>
           <View style={styles.circleStyle}>
             <CircleActive name="circle" colorName="#b9c42f"/>
           </View>
           <Text style={styles.ActiveHistoryIndexTxt}>
-            基礎バランス1
+            立位ヨコ
           </Text>
           <Text style={styles.ActiveHistoryIndexTime}>
-            2min
+            
           </Text>
           <Text style={styles.ActiveHistoryIndexGood}>
             ×256
           </Text>
         </View>
         <View style={styles.ActiveHistoryBody}>
-          <View style={styles.ActiveHistoryBodyBar}></View>
+        <View style={styles.ActiveHistoryBodyBar}></View>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('TrainingScreen'); }}
+          >
           <View style={styles.ActiveHistoryBodyImgBox}>
             <Image
               style={styles.ActiveHistoryBodyOutImg}
@@ -60,6 +62,7 @@ export default function ActiveHistory(props: any) {
             />
             <Text style={styles.ActiveHistoryBodyTxt}>実行中のトレーニング</Text>
           </View>
+          </TouchableOpacity>
           <View style={styles.ActiveHistoryBodyShare}>
             <Image
               style={styles.ActiveHistoryBodyShareImg}
@@ -71,7 +74,6 @@ export default function ActiveHistory(props: any) {
             />
           </View>
         </View>
-      </TouchableOpacity>
       {/* トレーニング表示のかたまり */}
       {/* <View>
         <View style={styles.ActiveHistoryIndex}>
@@ -276,11 +278,11 @@ const styles = StyleSheet.create({
   },
   ActiveHistoryBodyShareImg:{
     width: wp('10%'),
-    height: wp('35.5%'),
+    height: hp('17%'),
     // borderWidth:0.5,
   },
   ActiveHistoryBodyCam: {
-       width: wp('40%'),
+    width: wp('40%'),
     height: hp('100%'),
     resizeMode: 'contain',
     flexDirection:'row', 
