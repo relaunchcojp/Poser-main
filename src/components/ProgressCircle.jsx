@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import Svg, { G, Circle } from 'react-native-svg';
 
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
 export default ProgressCircle = () => {
   const size = 258;
   const strokeWidth = 10;
